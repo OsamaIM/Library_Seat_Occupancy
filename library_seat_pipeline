@@ -1,0 +1,52 @@
+// Project Pipeline
+digraph Library_Seat_Detection_Pipeline {
+	dpi=300 rankdir=TB size="10,10"
+	node [fillcolor="#E3F2FD" fontname=Helvetica penwidth=1.5 shape=box style=filled]
+	edge [fontname=Helvetica fontsize=10]
+	subgraph cluster_0 {
+		color=grey40 label="Phase 1: Data Acquisition & Engineering" style=dashed
+		A [label="Raw Dataset
+(Roboflow: Library-Seat-v2)
+[Chairs, Students, Tables]"]
+		B [label="Preprocessing & Augmentation
+- Geometric: Crop, Flip
+- Photometric: Brightness ±15%"]
+		A -> B
+	}
+	subgraph cluster_1 {
+		color=grey40 label="Phase 2: Deep Learning Model" style=dashed
+		C [label="YOLOv8 Architecture
+(Backbone: Darknet-53 / C2f)
+[Pre-trained on COCO]"]
+		D [label="Transfer Learning Process
+- Optimizer: SGD
+- Loss: CIoU + BCE
+- Epochs: 100"]
+		E [label="Trained Weights
+(best.pt)" fillcolor="#FFF9C4" shape=ellipse]
+		C -> D
+		D -> E
+	}
+	subgraph cluster_2 {
+		color=grey40 label="Phase 3: Real-Time Deployment & Logic" style=dashed
+		F [label="Input Source
+(CCTV Video Feed)
+[640x640 @ 30fps]"]
+		G [label="Inference Engine
+(Ultralytics API)" shape=component]
+		H [label="Heuristic Spatial Logic Layer
+[IoU Calculation]
+If Overlap > 0.30 -> Occupied"]
+		I [label="Optimization Engine
+(Social Distancing Recs)
+[Euclidean Distance Calc]"]
+		J [label="Final Output
+(Live Dashboard)" fillcolor="#C8E6C9" shape=note]
+		F -> G
+		G -> H [label="Bounding Boxes"]
+		H -> I [label="Occupancy Status"]
+		I -> J [label="Visual Overlay"]
+	}
+	B -> C [label="Formatted Tensors"]
+	E -> G [label="Load Weights"]
+}
