@@ -1,0 +1,14 @@
+# Deep Learning & Vision Models
+ultralytics==8.3.237
+torch==2.5.1
+torchvision
+
+# Image & Video Processing
+opencv-python
+
+# Math & Spatial Logic 
+numpy
+scipy
+
+# Dataset Management
+roboflow
