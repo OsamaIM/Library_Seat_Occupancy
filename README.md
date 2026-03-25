@@ -19,7 +19,7 @@
 
 ## ✨ What is this project?
 
-This system is an AI-powered smart campus solution that helps students find available study spaces while optimizing for social distancing. [cite_start]Unlike standard surveillance models that just count "people," this system uses a custom **Heuristic Spatial Logic Layer** to actively map the relationship between students and furniture, providing highly accurate, real-time occupancy data. [cite: 85, 86]
+This system is an AI-powered smart campus solution that helps students find available study spaces while optimizing for social distancing. Unlike standard surveillance models that just count "people," this system uses a custom **Heuristic Spatial Logic Layer** to actively map the relationship between students and furniture, providing highly accurate, real-time occupancy data.
 
 ---
 
@@ -28,20 +28,20 @@ This system is an AI-powered smart campus solution that helps students find avai
 | Spatial Verification ✅ | Social Distancing Optimizer 📏 |
 | :--- | :--- |
 | *"Is this seat actually taken?"* | *"Where is the safest place to sit?"* |
-| Goes beyond basic object detection. Calculates Intersection over Union (IoU) between "person" and "chair". [cite_start]If overlap > 0.30, the seat is occupied. [cite: 126, 127] | [cite_start]Processes detection data to calculate Euclidean distances between available seats, recommending the optimal empty seat. [cite: 93] |
+| Goes beyond basic object detection. Calculates Intersection over Union (IoU) between "person" and "chair".If overlap > 0.30, the seat is occupied. | Processes detection data to calculate Euclidean distances between available seats, recommending the optimal empty seat. |
 | **Status: Complete** | **Status: Complete** |
 
 ---
 
 ## 🏗️ System Architecture
 
-[cite_start]*(flowchart)* [cite: 136]
+*(flowchart)*
 <div align="center">
-  <img src="https://via.placeholder.com/800x300.png?text=Upload+Your+Pipeline+Diagram+Here" alt="System Architecture">
+  <img src="Diagram.png" alt="System Architecture">
 </div>
 
 ### Data Flow
-[cite_start]`Camera Stream` ➔ `YOLOv8 Inference` ➔ `NMS & Bounding Boxes` ➔ `IoU Spatial Logic` ➔ `Euclidean Optimization` ➔ `Live Dashboard` [cite: 140, 146, 147, 148, 149, 150, 152, 153, 154]
+`Camera Stream` ➔ `YOLOv8 Inference` ➔ `NMS & Bounding Boxes` ➔ `IoU Spatial Logic` ➔ `Euclidean Optimization` ➔ `Live Dashboard` 
 
 ---
 
@@ -63,25 +63,36 @@ This system is an AI-powered smart campus solution that helps students find avai
 | Layer | Technology |
 | :--- | :--- |
 | **Object Detection** | YOLOv8 (Ultralytics) |
-| **Deep Learning Framework** | [cite_start]PyTorch 2.5.1 (CUDA 12.1) [cite: 162] |
-| **Video Processing** | [cite_start]OpenCV (DirectShow backend) [cite: 163] |
-| **Spatial Math** | [cite_start]NumPy & SciPy [cite: 166] |
-| **Hardware Tested** | [cite_start]NVIDIA GeForce RTX 3060 (6GB VRAM) [cite: 161] |
-| **Dataset** | [cite_start]Roboflow Library-Seat-v2 (2,046 Train / 196 Val images) [cite: 177, 189] |
+| **Deep Learning Framework** | PyTorch 2.5.1 (CUDA 12.1)  |
+| **Video Processing** | OpenCV (DirectShow backend)  |
+| **Spatial Math** | NumPy & SciPy  |
+| **Hardware Tested** | NVIDIA GeForce RTX 3060 (6GB VRAM)  |
+| **Dataset** | Roboflow Library-Seat-v2 (2,046 Train / 196 Val images)  |
 
 ---
 
 ## 📈 Model Performance (Validation Metrics)
 
-[cite_start]The system is highly optimized for edge devices, achieving real-time speeds without sacrificing accuracy. [cite: 110, 111]
+The system is highly optimized for edge devices, achieving real-time speeds without sacrificing accuracy.
 
 | Metric | Score | Timing | Speed (ms/image) |
 | :--- | :--- | :--- | :--- |
-| **Precision (P)** | [cite_start]0.806 [cite: 192] | **Preprocess** | [cite_start]0.3 ms [cite: 196] |
-| **Recall (R)** | [cite_start]0.761 [cite: 192] | **Inference** | [cite_start]3.5 ms [cite: 196] |
-| **mAP50** | [cite_start]0.773 [cite: 192] | **Postprocess** | [cite_start]3.7 ms [cite: 196] |
+| **Precision (P)** | 0.806  | **Preprocess** | 0.3 ms  |
+| **Recall (R)** | 0.761  | **Inference** | 3.5 ms |
+| **mAP50** | 0.773  | **Postprocess** | 3.7 ms |
 
 ---
+<br/>
+
+## 👥 Development Team
+
+This research and engineering project was developed by:
+
+| Name | Institution | GitHub |
+| :--- | :--- | :--- |
+| **Osama Ibn Mahfuz** | Shanghai University of Engineering Science | [![GitHub](https://img.shields.io/badge/GitHub-OsamaIM-111111?style=flat-square&logo=github&logoColor=white)](https://github.com/OsamaIM) |
+
+<br/>
 
 ## 🚀 Quick Start
 
